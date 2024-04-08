@@ -1,6 +1,7 @@
 import express from "express";
-import { treeRouter } from "./DB/Routes/tree.js";
+import { treeRouter } from "./DB/Routes/tree_route/tree.js";
 import cors from "cors";
+import { addroute } from "./DB/Routes/Adddata/adddata.js";
 
 const app = express();
 
@@ -12,7 +13,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/tree", treeRouter);
+app.use("/tree/add", addroute);
 
 app.listen(8080, () => {
-  console.log("Server is running on port 3000");
+  console.log("Server is running on port 8080");
 });
