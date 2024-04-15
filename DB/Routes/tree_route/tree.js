@@ -244,7 +244,7 @@ router.put("/padpa/:id", (req, res) => {
           var str_query = result.map((item) => {
             return `UPDATE tree SET role_id=${role_id} WHERE id=${item.id}`;
           });
-          connection.query(str_query.join(";"), (err, result) => {
+          connection.query(str_query.join(";"), (err) => {
             if (err) {
               return res.status(400).json({
                 Error: "Error executing UPDATE query",
@@ -272,7 +272,7 @@ router.put("/dmpme/:id", (req, res) => {
   const { member_id, role_id } = req.body;
   const query = `UPDATE tree SET role_id=?,role=? WHERE id=?`;
   const select_query = `SELECT id FROM tree WHERE role_id=?`;
-  connection.query(query, [role_id, "E", member_id], (err, result) => {
+  connection.query(query, [role_id, "E", member_id], (err) => {
     if (err) {
       return res.status(400).json({
         Error: "Error executing UPDATE query",
