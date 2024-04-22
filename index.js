@@ -2,6 +2,7 @@ import express from "express";
 import { treeRouter } from "./DB/Routes/tree_route/tree.js";
 import cors from "cors";
 import { addroute } from "./DB/Routes/Adddata/adddata.js";
+import { FolderViewOptionsRouter } from "./DB/Routes/Folderview/folderviewoptions.js";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get("/", (req, res) => {
 
 app.use("/tree", treeRouter);
 app.use("/tree/add", addroute);
+app.use("/folderview", FolderViewOptionsRouter);
 
 app.listen(8080, () => {
   console.log("Server is running on port 8080");
